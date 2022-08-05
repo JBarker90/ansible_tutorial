@@ -4,6 +4,11 @@
   become: true
   tasks:
 
+    # This will update apt repo cache and then install apache2 package. This will try to avoid stale apt cache    
+  - name: update repository index
+    apt:
+      update_cache: yes  
+    
   - name: install apache2 package
     apt:
       name: apache2
