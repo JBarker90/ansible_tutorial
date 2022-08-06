@@ -20,4 +20,22 @@
     apt:
       name: libapache2-mod-php
       state: latest
-    when: ansible_distribution == "Ubuntu"     
+    when: ansible_distribution == "Ubuntu"
+
+    # This section will update repo cache then install apache for AlmaLinux
+  - name: update repository index
+    dnf:
+      update_cache: yes
+    when: ansible_distribution == "AlmaLinux"
+
+  - name: install apache package
+    dnf:
+      name: httpd
+      state: latest
+    when: ansible_distribution == "AlmaLinux"
+
+  - name: add php support for apache
+    dnf:
+      name: php
+      state: latest
+    when: ansible_distribution == "AlmaLinux"
