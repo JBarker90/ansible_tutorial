@@ -15,16 +15,12 @@
     when: ansible_distribution == "Ubuntu"
 
     # This section will update repo cache then install apache for AlmaLinux
-  - name: update repository index
-    dnf:
-      update_cache: yes
-    when: ansible_distribution == "AlmaLinux"
-
   - name: install apache and php packages
     dnf:
       name: 
         - httpd
         - php  
       state: latest
+      update_cache: yes  
     when: ansible_distribution == "AlmaLinux"
 
