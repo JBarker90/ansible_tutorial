@@ -4,7 +4,7 @@
   become: true
   tasks:
 
-    # This will update apt repo cache and then install apache2 package. This will try to avoid stale apt cache    
+    # This will update repo cache and then install apache and php packages. These are using variables declared in inventory file.   
   - name: install apache and php packages
     package:
       name: 
