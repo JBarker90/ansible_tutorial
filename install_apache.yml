@@ -24,14 +24,11 @@
       update_cache: yes
     when: ansible_distribution == "AlmaLinux"
 
-  - name: install apache package
+  - name: install apache and php packages
     dnf:
-      name: httpd
+      name: 
+        - httpd
+        - php  
       state: latest
     when: ansible_distribution == "AlmaLinux"
 
-  - name: add php support for apache
-    dnf:
-      name: php
-      state: latest
-    when: ansible_distribution == "AlmaLinux"
