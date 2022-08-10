@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+    # This will update repo cache and then install apache and php packages. These are using variables declared in inventory file.   
+  - name: install apache and php packages
+    package:
+      name: 
+        - "{{ apache_package }}"
+        - "{{ php_package }}"  
+      state: latest
+      update_cache: yes  
+
