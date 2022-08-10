@@ -1,6 +1,6 @@
 # These are internal IPs for Lab servers that Ansible automates
 
-192.168.1.74 apache_package=apache2 php_package=libapache2-mod-php
-192.168.1.75 apache_package=apache2 php_package=libapache2-mod-php
-192.168.1.76 apache_package=apache2 php_package=libapache2-mod-php
-192.168.1.77 apache_package=httpd php_package=php
+192.168.1.74 
+192.168.1.75 
+192.168.1.76 
+192.168.1.77
