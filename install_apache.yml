@@ -4,12 +4,22 @@
   become: true
   tasks:
 
-    # This will update repo cache and then install apache and php packages. These are using variables declared in inventory file.   
-  - name: install apache and php packages
-    package:
-      name: 
-        - "{{ apache_package }}"
-        - "{{ php_package }}"  
+    # This will update apt repo cache and then install apache2 package. This will try to avoid stale apt cache
+  - name: install apache2 and php packages
+    apt:
+      name:
+        - apache2
+        - libapache2-mod-php
       state: latest
-      update_cache: yes  
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
 
+    # This section will update repo cache then install apache for AlmaLinux
+  - name: install apache and php packages
+    dnf:
+      name:
+        - httpd
+        - php
+      state: latest
+      update_cache: yes
+    when: ansible_distribution == "AlmaLinux"
