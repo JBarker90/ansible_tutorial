@@ -47,7 +47,7 @@
     dnf:
       name: mariadb
       state: latest
-    when: ansible_distrubution == "AlmaLinux"
+    when: ansible_distribution == "AlmaLinux"
 
   - name: install mariadb package (Ubuntu)
     apt: 
