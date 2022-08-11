@@ -37,3 +37,20 @@
         - php
       state: latest
     when: ansible_distribution == "AlmaLinux"
+
+
+- hosts: db_servers
+  become: true
+  tasks:
+
+  - name: install mariadb package (AlmaLinux)
+    dnf:
+      name: mariadb
+      state: latest
+    when: ansible_distrubution == "AlmaLinux"
+
+  - name: install mariadb package (Ubuntu)
+    apt: 
+      name: mariadb-server
+      state: latest
+    when: ansible_distribution == "Ubuntu"
