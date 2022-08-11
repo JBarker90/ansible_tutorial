@@ -54,3 +54,13 @@
       name: mariadb-server
       state: latest
     when: ansible_distribution == "Ubuntu"
+
+
+- hosts: file_servers
+  become: true
+  tasks:
+
+  - name: install samba package
+    package: 
+      name: samba
+      state: latest
