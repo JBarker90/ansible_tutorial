@@ -5,12 +5,14 @@
   pre_tasks:
 
   - name: install updates (AlmaLinux)
+    tags: always
     dnf: 
       update_only: yes
       update_cache: yes
     when: ansible_distribution == "AlmaLinux"
   
   - name: install updates (Ubuntu)
+    tags: always
     apt: 
       upgrade: dist
       update_cache: yes
@@ -22,6 +24,7 @@
 
     # This will update apt repo cache and then install apache2 package. This will try to avoid stale apt cache
   - name: install apache2 and php packages
+    tags: apache,apache2,ubuntu
     apt:
       name:
         - apache2
@@ -31,6 +34,7 @@
 
     # This section will update repo cache then install apache for AlmaLinux
   - name: install apache and php packages
+    tags: apache,almalinux,httpd
     dnf:
       name:
         - httpd
@@ -44,12 +48,14 @@
   tasks:
 
   - name: install mariadb package (AlmaLinux)
+    tags: almalinux,db,mariadb
     dnf:
       name: mariadb
       state: latest
     when: ansible_distribution == "AlmaLinux"
 
   - name: install mariadb package (Ubuntu)
+    tags: ubuntu,db,mariadb
     apt: 
       name: mariadb-server
       state: latest
@@ -61,6 +67,7 @@
   tasks:
 
   - name: install samba package
+    tags: samba
     package: 
       name: samba
       state: latest
