@@ -1,8 +1,8 @@
 # The 'when' Conditional
 
-1. This will allow a conditional to specify plays when different distros are in the inventory. 
+## 1. This will allow a conditional to specify plays when different distros are in the inventory. 
 
-2. Since our current playbook specifies apt as the package manager, our playbook will fail when our newer AlmaLinux 8 server was added to the inventory list.
+## 2. Since our current playbook specifies apt as the package manager, our playbook will fail when our newer AlmaLinux 8 server was added to the inventory list.
 
 ```
 ansible-playbook --ask-become-pass install_apache.yml
@@ -44,7 +44,7 @@ PLAY RECAP *********************************************************************
 192.168.1.77               : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
 ```
 
-3. You can add a when statement to playbook. Below is a when statement specifying ubuntu distro
+## 3. You can add a when statement to playbook. Below is a when statement specifying ubuntu distro
 
 ```
 ---
@@ -97,7 +97,7 @@ PLAY RECAP *********************************************************************
 ```
 
 
-4. Now, we will need to add a when statement for the AlmaLinux server. So we can run `gather_facts` against the newer server to see distro information
+## 4. Now, we will need to add a when statement for the AlmaLinux server. So we can run `gather_facts` against the newer server to see distro information
 
 ```
 ansible all -m gather_facts --limit 192.168.1.77 | grep 'ansible_distribution'
