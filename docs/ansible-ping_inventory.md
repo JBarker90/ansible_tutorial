@@ -1,4 +1,4 @@
-## Ansible Ping Inventory
+# Ansible Ping Inventory
 
 1. This will test the connection
 
