@@ -2,8 +2,8 @@
 
 ## All of these changes and files can be found on GitHub and YouTube for Learn Linux TV
 
-https://docs.ansible.com/ansible/2.4/apt_module.html 
-https://github.com/JBarker90/ansible_tutorial.git
+- https://docs.ansible.com/ansible/2.4/apt_module.html 
+- https://github.com/JBarker90/ansible_tutorial.git
 
 ## 1. We can create a simple yml file called `install_apache.yml` 
 
