@@ -52,7 +52,7 @@ PLAY RECAP *********************************************************************
 ```
 
 
-### 2. Then added a simple line to playbook to update apt cache before installing
+### 2. Then we can add a simple line to the playbook to update apt cache before installing the package.
 
 ```
 ---
@@ -132,7 +132,7 @@ PLAY RECAP *********************************************************************
 ```
 
 
-### 4. Then added state latest to the playbook.
+### 4. Then we can change the state to be the latest version in the playbook.
 
 ```
 ---
