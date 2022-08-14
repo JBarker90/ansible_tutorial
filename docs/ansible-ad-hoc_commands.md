@@ -4,10 +4,10 @@
 - https://docs.ansible.com/ansible/2.9/modules/apt_module.html#apt-module
 - https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html
 
-### 1. When making changes to remote hosts Ansible needs the equivalent of `sudo` privileges. 
+### 1. When making changes to remote hosts, Ansible needs the equivalent of `sudo` privileges. 
 
-- This command will use the `apt` module and update cache. Which is the equivalent of running `apt update` 
-- But it will fail without having elevate privileges
+- This command will use the `apt` module and update cache, which is the equivalent of running `apt update` 
+- But it will fail without having elevated privileges
 
 ```
 ansible all -m apt -a update_cache=true
@@ -40,13 +40,13 @@ jonathan@dockerhost-01:~/ansible_tutorial$ ansible all -m apt -a update_cache=tr
 }
 ```
 
-### 2. Ansible needs it's equivalent of `sudo` which is `become`
+### 2. Ansible needs it's equivalent of `sudo`, which is `become`
 
 ```
 ansible all -m apt -a update_cache=true --become --ask-become-pass
 ```
 
-- This will ask for the `BECOME` password which is the `sudo` password and then run
+- This will ask for the `BECOME` password, which is the `sudo` password, and then it will run.
 
 Example:
 
@@ -117,13 +117,13 @@ BECOME password:
 ```
 
 
-### 4. You can upgrade existing packages using the following
+### 4. You can upgrade existing packages using the following:
 
 ```
 ansible all -m apt -a "name=openssl state=latest" --become --ask-become-pass
 ```
 
-Example: On one of the lab servers I saw that the openssl package needed to be upgraded. So this command will use apt to upgrade to the "latest state". There was a bunch of output so this in just the first few important lines
+Example: On one of the lab servers, I saw that the openssl package needed to be upgraded. So this command will use apt to upgrade to the "latest state". There was a bunch of output so this is just the first few important lines
 
 ```
 jonathan@dockerhost-01:~/ansible_tutorial$ ansible all -m apt -a "name=openssl state=latest" --become --ask-become-pass
@@ -141,13 +141,13 @@ BECOME password:
 ```
 
 
-### 5. This will upgrade all of the packages on the servers using dist upgrade
+### 5. This will upgrade all of the packages on the servers using 'dist-upgrade'
 
 ```
 ansible all -m apt -a "upgrade=dist" --become --ask-become-pass
 ```
 
-Example: It took a really long time. But this is 
+Example: It took a really long time. But this is the output: 
 
 ```
 jonathan@dockerhost-01:~/ansible_tutorial$ ansible all -m apt -a "upgrade=dist" --become --ask-become-pass
