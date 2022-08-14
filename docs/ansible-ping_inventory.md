@@ -1,6 +1,6 @@
 # Ansible Ping Inventory
 
-## 1. This will test the connection
+### 1. This will test the connection
 
 ```
 ansible all --key-file ~/.ssh/ansible_key -i inventory -m ping
@@ -33,7 +33,7 @@ jonathan@dockerhost-01:~/ansible_tutorial$ ansible all --key-file ~/.ssh/ansible
 }
 ```
 
-## 2. You can automate this by creating an ansible config file called `ansible.cfg`
+### 2. You can automate this by creating an ansible config file called `ansible.cfg`
 
 NOTE: This file will be read by ansible everytime you run it.
 
@@ -47,7 +47,7 @@ inventory = inventory
 private_key_file = ~/.ssh/ansible_key
 ```
 
-## 3. Then you can shorten the command and ping all again using the ansible config file
+### 3. Then you can shorten the command and ping all again using the ansible config file
 
 ```
 ansible all -m ping
@@ -80,7 +80,7 @@ jonathan@dockerhost-01:~/ansible_tutorial$ ansibl all -m pineg
 }
 ```
 
-## 4. You can list hosts using ansible
+### 4. You can list hosts using ansible
 
 ```
 ansible all --list-hosts
@@ -97,7 +97,11 @@ jonathan@dockerhost-01:~/ansible_tutorial$ ansible all --list-hosts
 ```
 
 
+<<<<<<< HEAD
 ## 5. You can use this ansible command to gather all of the info about the hosts. It will be useful. You can output a ton of info but you can pipe it through `less` or some other method to avoid a data dump on the terminal.
+=======
+### 5. You can use this ansible command to gather all of the info about the hosts. It will useful. You can output a ton of info but can be pipe it through less or some other method to avoid data dump on the terminal
+>>>>>>> c94ea5abb3cf9e78b2defe0ba2b260a88404f6dc
 
 ```
 ansible all -m gather_facts

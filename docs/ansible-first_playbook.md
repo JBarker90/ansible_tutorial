@@ -5,7 +5,7 @@
 - https://docs.ansible.com/ansible/2.4/apt_module.html 
 - https://github.com/JBarker90/ansible_tutorial.git
 
-## 1. We can create a simple yml file called `install_apache.yml` 
+### 1. We can create a simple yml file called `install_apache.yml` 
 
 - This will install the apache2 package using apt package installer
 
@@ -52,7 +52,7 @@ PLAY RECAP *********************************************************************
 ```
 
 
-## 2. Then added a simple line to playbook to update apt cache before installing
+### 2. Then added a simple line to playbook to update apt cache before installing
 
 ```
 ---
@@ -96,7 +96,7 @@ PLAY RECAP *********************************************************************
 192.168.1.76               : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
-## 3. Then add a play to install PHP support
+### 3. Then add a play to install PHP support
 
 ```
 ---
@@ -132,7 +132,7 @@ PLAY RECAP *********************************************************************
 ```
 
 
-## 4. Then added state latest to the playbook.
+### 4. Then added state latest to the playbook.
 
 ```
 ---
@@ -159,7 +159,7 @@ PLAY RECAP *********************************************************************
 
 NOTE: When running the playbook nothing changed because the latest version was already installed and apt already up to date
 
-## 5. Copied the `install_apache.yml` file to `remove_apache.yml` to create a playbook that will remove apache2 and libapache2-mod-php
+### 5. Copied the `install_apache.yml` file to `remove_apache.yml` to create a playbook that will remove apache2 and libapache2-mod-php
 
 ```
 ---

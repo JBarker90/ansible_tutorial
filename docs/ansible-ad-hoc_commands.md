@@ -1,10 +1,10 @@
-# Ansible Using Elevated Privileges with Ad-hoc commands
+# Using Elevated Privileges with Ad-hoc commands in Ansible
 
 - https://www.learnlinux.tv/getting-started-with-ansible-05-running-elevated-commands/
 - https://docs.ansible.com/ansible/2.9/modules/apt_module.html#apt-module
 - https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html
 
-## 1. When making changes to remote hosts Ansible needs the equivalent of `sudo` privileges. 
+### 1. When making changes to remote hosts Ansible needs the equivalent of `sudo` privileges. 
 
 - This command will use the `apt` module and update cache. Which is the equivalent of running `apt update` 
 - But it will fail without having elevate privileges
@@ -40,7 +40,7 @@ jonathan@dockerhost-01:~/ansible_tutorial$ ansible all -m apt -a update_cache=tr
 }
 ```
 
-## 2. Ansible needs it's equivalent of `sudo` which is `become`
+### 2. Ansible needs it's equivalent of `sudo` which is `become`
 
 ```
 ansible all -m apt -a update_cache=true --become --ask-become-pass
@@ -79,7 +79,7 @@ BECOME password:
 }
 ```
 
-## 3. How to install a package using elevated privileges
+### 3. How to install a package using elevated privileges
 
 ```
 ansible all -m apt -a name=vim --become --ask-become-pass
@@ -117,7 +117,7 @@ BECOME password:
 ```
 
 
-## 4. You can upgrade existing packages using the following
+### 4. You can upgrade existing packages using the following
 
 ```
 ansible all -m apt -a "name=openssl state=latest" --become --ask-become-pass
@@ -141,7 +141,7 @@ BECOME password:
 ```
 
 
-## 5. This will upgrade all of the packages on the servers using dist upgrade
+### 5. This will upgrade all of the packages on the servers using dist upgrade
 
 ```
 ansible all -m apt -a "upgrade=dist" --become --ask-become-pass
