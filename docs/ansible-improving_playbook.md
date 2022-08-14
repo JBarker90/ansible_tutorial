@@ -1,12 +1,12 @@
-## Improving Your Playbook
+# Improving Your Playbook
 
-https://docs.ansible.com/ansible/2.8/modules/package_module.html
+- https://docs.ansible.com/ansible/2.8/modules/package_module.html
 
 ```
 ansible-playbook --ask-become-pass install_apache.yml
 ```
 
-1. Consolidating the installation plays a little bit. Instead of having two plays (one to install apache and the other to install php), I combined the two in a list.
+### 1. Consolidating the installation plays a little bit. Instead of having two plays (one to install apache and the other to install php), I combined the two in a list.
 
 ```
 ---
@@ -30,7 +30,7 @@ ansible-playbook --ask-become-pass install_apache.yml
     when: ansible_distribution == "Ubuntu"
 ```
 
-2. Did the same consolidation with the AlmaLinux play. 
+### 2. Did the same consolidation with the AlmaLinux play. 
 
 ```
     # This section will update repo cache then install apache for AlmaLinux
@@ -48,7 +48,7 @@ ansible-playbook --ask-become-pass install_apache.yml
     when: ansible_distribution == "AlmaLinux"
 ```
 
-3. We can clean this up even more and consolidate it down to 2 plays. Instead of having 1 play to update repo cache and 1 to install packages, you can install packages and update cache in 1 play.
+### 3. We can clean this up even more and consolidate it down to 2 plays. Instead of having 1 play to update repo cache and 1 to install packages, you can install packages and update cache in 1 play.
 
 NOTE: I removed the play to update cache and added the line below state saying `update_cache: yes`
 
@@ -80,7 +80,7 @@ NOTE: I removed the play to update cache and added the line below state saying `
     when: ansible_distribution == "AlmaLinux"
 ```
 
-4. We can consolidate it even more down to 1 play in the playbook. 
+### 4. We can consolidate it even more down to 1 play in the playbook. 
 
 - Step 1: We can declare variables in the inventory file to specify which php and apache packages.
 
