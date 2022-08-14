@@ -96,12 +96,7 @@ jonathan@dockerhost-01:~/ansible_tutorial$ ansible all --list-hosts
     192.168.1.76
 ```
 
-
-<<<<<<< HEAD
-## 5. You can use this ansible command to gather all of the info about the hosts. It will be useful. You can output a ton of info but you can pipe it through `less` or some other method to avoid a data dump on the terminal.
-=======
-### 5. You can use this ansible command to gather all of the info about the hosts. It will useful. You can output a ton of info but can be pipe it through less or some other method to avoid data dump on the terminal
->>>>>>> c94ea5abb3cf9e78b2defe0ba2b260a88404f6dc
+### 5. You can use this ansible command to gather all of the info about the hosts. It will be useful. You can output a ton of info but you can pipe it through `less` or some other method to avoid a data dump on the terminal.
 
 ```
 ansible all -m gather_facts
