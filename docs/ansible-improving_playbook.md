@@ -6,7 +6,7 @@
 ansible-playbook --ask-become-pass install_apache.yml
 ```
 
-### 1. Consolidating the installation plays a little bit. Instead of having two plays (one to install apache and the other to install php), I combined the two in a list.
+### 1. We can consolidate the installation plays a little bit. Instead of having two plays (one to install apache and the other to install php), we can combine the two in a list.
 
 ```
 ---
@@ -30,7 +30,7 @@ ansible-playbook --ask-become-pass install_apache.yml
     when: ansible_distribution == "Ubuntu"
 ```
 
-### 2. Did the same consolidation with the AlmaLinux play. 
+### 2. We can do the same consolidation with the AlmaLinux play. 
 
 ```
     # This section will update repo cache then install apache for AlmaLinux
