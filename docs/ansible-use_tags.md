@@ -1,8 +1,8 @@
-## How to use Tags
+# How to Use Tags
 
-https://docs.ansible.com/ansible/latest/user_guide/playbooks_tags.html tags in large p
+- https://docs.ansible.com/ansible/latest/user_guide/playbooks_tags.html
 
-1. You can uselaybooks to create searchable metadata for plays. Then run parts of the playbook (instead of entire playbook) based on tags
+### 1. You can use tags in large playbooks to create searchable metadata for plays. Then run parts of the playbook (instead of entire playbook) based on tags
 
 Example: 
 
@@ -22,7 +22,7 @@ Example:
     when: ansible_distribution == "Ubuntu"
 ```
 
-2. You can list tags in a playbook with the following command
+### 2. You can list tags in a playbook with the following command
 
 ```
 ansible-playbook --list-tags <playbook>.yml
@@ -48,7 +48,7 @@ playbook: site.yml
       TASK TAGS: [samba]
 ```
 
-3. To run the ansible playbook using tags, you can run the following.
+### 3. To run the ansible playbook using tags, you can run the following.
 
 ```
 ansible-playbook --tags <nameoftag> --ask-become-pass <playbookname>.yml
@@ -101,7 +101,7 @@ PLAY RECAP *********************************************************************
 192.168.1.77               : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
 ```
 
-4. If you want to run multiple tags you can run it like this:
+### 4. If you want to run multiple tags you can run it like this:
 
 
 ```
