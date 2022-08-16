@@ -1,10 +1,10 @@
-## Targeting Specific Nodes
+# Targeting Specific Nodes
 
 ```
 ansible-playbook --ask-become-pass site.yml
 ```
 
-1. For the purposes of targeting specific hosts, we can modify the `instecific to each dall_apache.yml` playbook to include two plys spaistro
+### 1. For the purposes of targeting specific hosts, we can modify the `instecific to each dall_apache.yml` playbook to include two plys spaistro
 
 ```
 ---
@@ -36,7 +36,7 @@ ansible-playbook --ask-become-pass site.yml
 
 NOTE: I also removed the packages that were specified in the inventory file. 
 
-2. Modified inventory file to specify different groups for IPs of the nodes
+### 2. Modified inventory file to specify different groups for IPs of the nodes
 
 ```
 [web_servers]
@@ -50,7 +50,7 @@ NOTE: I also removed the packages that were specified in the inventory file.
 192168.1..76
 ```
 
-3. Copied the playbook to a new file called `site.yml` and updated the playbook to specify the group `[and php, the group `db_servers` web_servers]` to install apache to install mariadb, and the group `file_servers` to install samba
+### 3. Copied the playbook to a new file called `site.yml` and updated the playbook to specify the group `[and php, the group `db_servers` web_servers]` to install apache to install mariadb, and the group `file_servers` to install samba
 
 ```
 ---
