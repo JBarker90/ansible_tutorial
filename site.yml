@@ -67,6 +67,22 @@
       enabled: yes
     when: ansible_distribution == "AlmaLinux"
 
+  - name: change e-mail address for admin
+    tags: apache,almalinux,httpd
+    lineinfile: 
+      path: /etc/httpd/conf/httpd.conf
+      regexp: '^ServerAdmin'
+      line: ServerAdmin somebody@somewhere.net
+    when: ansible_distribution == "AlmaLinux"
+    register: httpd
+
+  - name: restart httpd (AlmaLinux)
+    tags: apache,almalinux,httpd
+    service:
+      name: httpd
+      state: restarted
+    when: httpd.changed
+
   - name: copy default html file for site
     tags: apache,apache2,httpd
     copy: 
