@@ -59,6 +59,13 @@
       state: latest
     when: ansible_distribution == "AlmaLinux"
 
+  - name: start httpd (AlmaLinux)
+    tags: apache,almalinux,httpd
+    service: 
+      name: httpd
+      state: started
+    when: ansible_distribution == "AlmaLinux"
+
   - name: copy default html file for site
     tags: apache,apache2,httpd
     copy: 
