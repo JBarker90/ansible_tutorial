@@ -1,10 +1,10 @@
-## Managing Files
+# Managing Files
 
 - https://docs.ansible.com/ansible/2.9/modules/copy_module.html
 
-1. This will go over the concept of copying a file or files to a server using Ansible. So what we will do is use Ansible playbook to copy files and sync it to a specific place on one of nodes
+### 1. This will go over the concept of copying a file or files to a server using Ansible. So what we will do is use Ansible playbook to copy files and sync it to a specific place on one of nodes
 
-2. I created a new directory called `/files` and created a simple html file inside called `default_site.html` 
+### 2. I created a new directory called `/files` and created a simple html file inside called `default_site.html` 
 
 ```
 <html>
@@ -17,7 +17,7 @@
 ```
 
 
-3. Then we will add a play in the playbook `site.yml` to copy the file to the servers.
+### 3. Then we will add a play in the playbook `site.yml` to copy the file to the servers.
 
 - Under the plays for `web_servers` we will add a new play that will use the `copy` module to copy the `default_site.html` file I created to the destination on the servers in the path `/var/www/html/index.html` 
 
@@ -89,7 +89,7 @@ PLAY RECAP *********************************************************************
 192.168.1.77               : ok=5    changed=1    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
 ```
 
-Proof of concept: The file has now been copied to one of the Ansible lab servers in the `web_servers` group.
+### Proof of concept: The file has now been copied to one of the Ansible lab servers in the `web_servers` group.
 
 ```
 jonathan@ansiblelab-01:~$ cat /var/www/html/index.html
@@ -112,7 +112,7 @@ Change: 2022-08-13 16:37:30.372780457 +0000
  Birth: 2022-08-13 16:37:30.164778438 +0000
 ```
 
-4. We can also use Ansible to configure and install packages to our local workstation or control host. 
+### 4. We can also use Ansible to configure and install packages to our local workstation or control host. 
 
 - This play creates a new `[workstations]` group that will install and unzip Terraform to the local dockerhost server I'm using to run plays. The following was added to `site.yml`: 
 
