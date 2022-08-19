@@ -89,7 +89,7 @@ PLAY RECAP *********************************************************************
 192.168.1.77               : ok=5    changed=1    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
 ```
 
-### Proof of concept: The file has now been copied to one of the Ansible lab servers in the `web_servers` group.
+#### Proof of concept: The file has now been copied to one of the Ansible lab servers in the `web_servers` group.
 
 ```
 jonathan@ansiblelab-01:~$ cat /var/www/html/index.html
