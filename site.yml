@@ -4,14 +4,14 @@
   become: true
   pre_tasks:
 
-  - name: install updates (AlmaLinux)
+  - name: update repo cache (AlmaLinux)
     tags: always
     dnf: 
       update_cache: yes
     changed_when: false
     when: ansible_distribution == "AlmaLinux"
   
-  - name: install updates (Ubuntu)
+  - name: update repo cache (Ubuntu)
     tags: always
     apt: 
       update_cache: yes
