@@ -22,26 +22,12 @@
   become: true
   tasks:
 
-  - name: create dave user
-    tags: always
-    user: 
-      name: dave
-      groups: root
-
   - name: add ssh key for dave
     tags: always
     authorized_key: 
       user: dave
       key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGAhvL68zMlGEqZtBBiJskMpRgXRMX6N7/6BfWxZ8s7Q Ansible keys for Docker host"
-  - name: add sudoers files for dave
-    tags: always
-    copy: 
-      src: sudoer_dave
-      dest: /etc/sudoers.d/dave
-      owner: root
-      group: root
-      mode: 0440
-      
+
 - hosts: workstations
   become: true
   tasks: 
