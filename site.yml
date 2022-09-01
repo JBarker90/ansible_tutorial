@@ -7,15 +7,15 @@
   - name: install updates (AlmaLinux)
     tags: always
     dnf: 
-      update_only: yes
       update_cache: yes
+    changed_when: false
     when: ansible_distribution == "AlmaLinux"
   
   - name: install updates (Ubuntu)
     tags: always
     apt: 
-      upgrade: dist
       update_cache: yes
+    changed_when: false
     when: ansible_distribution == "Ubuntu" 
 
 - hosts: all
