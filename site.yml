@@ -20,113 +20,26 @@
 
 - hosts: all
   become: true
-  tasks:
-
-  - name: add ssh key for dave
-    tags: always
-    authorized_key: 
-      user: dave
-      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGAhvL68zMlGEqZtBBiJskMpRgXRMX6N7/6BfWxZ8s7Q Ansible keys for Docker host"
+  roles:
+    - base
 
 - hosts: workstations
   become: true
-  tasks: 
-
-  - name: install unzip
-    package:
-      name: unzip
-
-  - name: install terraform
-    unarchive:
-      src: https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip
-      dest: /usr/local/bin
-      remote_src: yes
-      mode: 0755
-      owner: root
-      group: root
+  roles:
+    - workstations
 
 - hosts: web_servers
   become: true
-  tasks:
-
-    # This will update apt repo cache and then install apache2 package. This will try to avoid stale apt cache
-  - name: install apache2 and php packages
-    tags: apache,apache2,ubuntu
-    apt:
-      name:
-        - apache2
-        - libapache2-mod-php
-      state: latest
-    when: ansible_distribution == "Ubuntu"
-
-    # This section will update repo cache then install apache for AlmaLinux
-  - name: install apache and php packages
-    tags: apache,almalinux,httpd
-    dnf:
-      name:
-        - httpd
-        - php
-      state: latest
-    when: ansible_distribution == "AlmaLinux"
-
-  - name: start httpd (AlmaLinux)
-    tags: apache,almalinux,httpd
-    service: 
-      name: httpd
-      state: started
-      enabled: yes
-    when: ansible_distribution == "AlmaLinux"
-
-  - name: change e-mail address for admin
-    tags: apache,almalinux,httpd
-    lineinfile: 
-      path: /etc/httpd/conf/httpd.conf
-      regexp: '^ServerAdmin'
-      line: ServerAdmin somebody@somewhere.net
-    when: ansible_distribution == "AlmaLinux"
-    register: httpd
-
-  - name: restart httpd (AlmaLinux)
-    tags: apache,almalinux,httpd
-    service:
-      name: httpd
-      state: restarted
-    when: httpd.changed
-
-  - name: copy default html file for site
-    tags: apache,apache2,httpd
-    copy: 
-      src: default_site.html
-      dest: /var/www/html/index.html
-      owner: root
-      group: root
-      mode: 0644
+  roles: 
+    - web_servers
 
 - hosts: db_servers
   become: true
-  tasks:
-
-  - name: install mariadb package (AlmaLinux)
-    tags: almalinux,db,mariadb
-    dnf:
-      name: mariadb
-      state: latest
-    when: ansible_distribution == "AlmaLinux"
-
-  - name: install mariadb package (Ubuntu)
-    tags: ubuntu,db,mariadb
-    apt: 
-      name: mariadb-server
-      state: latest
-    when: ansible_distribution == "Ubuntu"
-
+  roles: 
+    - db_servers
 
 - hosts: file_servers
   become: true
-  tasks:
+  roles:
+    - file_servers
 
-  - name: install samba package
-    tags: samba
-    package: 
-      name: samba
-      state: latest
