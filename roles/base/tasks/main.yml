@@ -1,0 +1,4 @@
+- name: add ssh key for dave
+  authorized_key: 
+    user: dave
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGAhvL68zMlGEqZtBBiJskMpRgXRMX6N7/6BfWxZ8s7Q Ansible keys for Docker host"
