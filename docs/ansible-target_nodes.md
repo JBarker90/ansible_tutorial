@@ -50,7 +50,7 @@ NOTE: I also removed the packages that were specified in the inventory file.
 192.168.1.76
 ```
 
-### 3. Copied the playbook to a new file called `site.yml` and updated the playbook to specify the group `[and php, the group `db_servers` web_servers]` to install apache to install mariadb, and the group `file_servers` to install samba
+### 3. Copied the playbook to a new file called `site.yml` and updated the playbook to specify the group `[web_servers]` to install apache and php, the group `db_servers` to install mariadb, and the group `file_servers` to install samba
 
 ```
 ---
@@ -63,25 +63,25 @@ NOTE: I also removed the packages that were specified in the inventory file.
     dnf:
       update_only: yes
       update_cache: yes
-= "AlmaLinux"
+    when: ansible_distribution == "AlmaLinux"
 
-     when: ansible_distribution = - name: install updates (Ubuntu)
+  - name: install updates (Ubuntu)
     apt:
       upgrade: dist
       update_cache: yes
-    when: ansible_distribution == "Ubuntuservers
-  become"
+    when: ansible_distribution == "Ubuntu"
 
-- hosts: web_: true
+- hosts: web_servers
+  become: true
   tasks:
 
     # This will update apt repo cache and then install apache2 package. This will try to avoid stale apt cache
   - name: install apache2 and php packages
     apt:
       name:
-pache2-mod-php
-         - apache2
-        - liba     state: latest
+        - apache2
+        - libapache2-mod-php
+      state: latest
     when: ansible_distribution == "Ubuntu"
 
     # This section will update repo cache then install apache for AlmaLinux
@@ -90,8 +90,8 @@ pache2-mod-php
       name:
         - httpd
         - php
-      stwhen: ansible_diate: latest
-    stribution == "AlmaLinux"
+      state: latest
+    when: ansible_distribution == "AlmaLinux"
 
 - hosts: db_servers
   become: true
