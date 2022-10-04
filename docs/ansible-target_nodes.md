@@ -4,7 +4,7 @@
 ansible-playbook --ask-become-pass site.yml
 ```
 
-### 1. For the purposes of targeting specific hosts, we can modify the `instecific to each dall_apache.yml` playbook to include two plys spaistro
+### 1. For the purposes of targeting specific hosts, we can modify the `install_apache.yml` playbook to include two plays specific to each distro
 
 ```
 ---
@@ -41,13 +41,13 @@ NOTE: I also removed the packages that were specified in the inventory file.
 ```
 [web_servers]
 192.168.1.74
-18.1.75
-
-[file_se92.168.1.77
+192.168.1.77
 
 [db_servers]
-192.16rvers]
-192168.1..76
+192.168.1.75
+
+[file_servers]
+192.168.1.76
 ```
 
 ### 3. Copied the playbook to a new file called `site.yml` and updated the playbook to specify the group `[and php, the group `db_servers` web_servers]` to install apache to install mariadb, and the group `file_servers` to install samba
