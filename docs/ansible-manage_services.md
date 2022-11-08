@@ -1,8 +1,8 @@
-## Managing Services
+# Managing Services
 
-1. With some services they sometimes need to be started manually after installing them. So this will go over ways we can manage services with a playbook.
+### 1. With some services they sometimes need to be started manually after installing them. So this will go over ways we can manage services with a playbook.
 
-2. This play will set the service state to "started". 
+### 2. This play will set the service state to "started". 
 
 ```
   - name: start httpd (AlmaLinux)
@@ -109,7 +109,7 @@ PLAY RECAP *********************************************************************
            ├─18731 /usr/sbin/httpd -DFOREGROUND
            └─18732 /usr/sbin/httpd -DFOREGROUND
 ```
-3. Now, there is one more issue with the Apache service. From the output it is showing that the service is "disabled". So the play will install apache package and then start the service. However, if this server were to be rebooted for whatever reason the service will not automatically start. 
+### 3. Now, there is one more issue with the Apache service. From the output it is showing that the service is "disabled". So the play will install apache package and then start the service. However, if this server were to be rebooted for whatever reason the service will not automatically start. 
 
 - We can fix the play by adding "enabled: yes" to the current play
 
@@ -168,7 +168,7 @@ PLAY RECAP *********************************************************************
            └─20265 /usr/sbin/httpd -DFOREGROUND
 ```
 
-4. Now, we can also restart services using Ansible after a change or update has been made to service. Typically, this will need to happen after a modification to a configuration or some other change. 
+### 4. Now, we can also restart services using Ansible after a change or update has been made to service. Typically, this will need to happen after a modification to a configuration or some other change. 
 
 - This new play will use the `lineinfile` module which will allow us to change a line in whichever file.
 
@@ -217,7 +217,7 @@ ServerAdmin somebody@somewhere.net
 
 NOTE: When using the `lineinfile` module you may have duplicate changes if there are any spelling errors or typos. It's very common. However, you can simply run the playbook again and if there were no changes made the second time then it should be good to go. 
 
-5. If you are making multiple changes to a file one after another, you can run into problems if you use the same register variable. 
+### 5. If you are making multiple changes to a file one after another, you can run into problems if you use the same register variable. 
 
 - If you have two plays that make different changes but both are using the same `register: <variable>` variable then the second modification may never run. 
 - Or other things will not run properly.  The reason is because the first variable will be stored as "changed" but when it gets to the second it will see the variable as already changed not updates necessary.
