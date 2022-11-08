@@ -207,7 +207,9 @@ NOTE: This is only needed if we are copying files from a source location to the 
 - I copied the `default_site.html` file from the earlier location to this `web_servers` role under the `files` directory
 
 ```
-jonathan@dockerhost-01:~/ansible_tutorial/roles/web_servers$ cp -av ~/ansible_tutorial/files/default_site.html files/ '/home/jonathan/ansible_tutorial/files/default_site.html' -> 'files/default_site.html'
+jonathan@dockerhost-01:~/ansible_tutorial/roles/web_servers$ cp -av ~/ansible_tutorial/files/default_site.html files/
+
+'/home/jonathan/ansible_tutorial/files/default_site.html' -> 'files/default_site.html'
 ```
 
 - When you run this playbook, the `web_servers` role will now copy the `default_site.html` file from our new files directory for the role.
