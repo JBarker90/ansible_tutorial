@@ -1,10 +1,10 @@
-## Ansible Roles
+# Ansible Roles
 
 - https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html
 
-1. The concept of roles will allow us to split up tasks in a way that makes more sense.
+### 1. The concept of roles will allow us to split up tasks in a way that makes more sense.
 
-2. Using roles we can clean up the playbook quite a bit. We made a copy of the previous `site.yml` and then reconfigured `site.yml` to use the roles below
+### 2. Using roles we can clean up the playbook quite a bit. We made a copy of the previous `site.yml` and then reconfigured `site.yml` to use the roles below
 
 ```
 ---
@@ -55,7 +55,7 @@
 
 NOTE: This is will fail because we haven't created the roles yet. 
 
-2. In order to create these roles, we will need to create a new directory called `/roles` and then create a directory for each role. 
+### 3. In order to create these roles, we will need to create a new directory called `/roles` and then create a directory for each role. 
 
 ```
 jonathan@dockerhost-01:~/ansible_tutorial/roles$ ll
@@ -79,7 +79,7 @@ jonathan@dockerhost-01:~/ansible_tutorial/roles$ mkdir web_servers/tasks
 jonathan@dockerhost-01:~/ansible_tutorial/roles$ mkdir workstations/tasks
 ```
 
-3. Now, in each `tasks` directory this will be where we will create our playbooks or task book. These will not be complete playbooks because they will only include tasks.
+### 4. Now, in each `tasks` directory this will be where we will create our playbooks or task book. These will not be complete playbooks because they will only include tasks.
 
 - Under the tasks directory we will create a `main.yml` file
 
@@ -200,7 +200,7 @@ jonathan@dockerhost-01:~/ansible_tutorial/roles$ tree
     group: root
 ```
 
-4. At this point the play will still fail, we need to create `files` directory located in `/roles/web_servers/files` so the `web_servers` roles has a place to copy source files from. 
+### 5. At this point the play will still fail, we need to create `files` directory located in `/roles/web_servers/files` so the `web_servers` roles has a place to copy source files from. 
 
 NOTE: This is only needed if we are copying files from a source location to the destination. 
 
