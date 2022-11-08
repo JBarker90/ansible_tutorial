@@ -1,9 +1,9 @@
-## Adding Users and Bootstrapping
+# Adding Users and Bootstrapping
 
 - https://docs.ansible.com/ansible/2.4/user_module.html
 - https://docs.ansible.com/ansible/2.3/authorized_key_module.html
 
-1. We added play that will create the user named `dave` using the `user` module in Ansible.
+### 1. We added play that will create the user named `dave` using the `user` module in Ansible.
 
 ```
 - hosts: all
@@ -61,7 +61,7 @@ jonathan:x:1000:1000:Jonathan Barker,,,:/home/jonathan:/bin/bash
 dave:x:1001:1001::/home/dave:/bin/sh
 ```
 
-2. We can add another play that will add the SSH pub key for Ansible using `authorized_key` module for the new user that was created. Then a second play that will add sudo privileges
+### 2. We can add another play that will add the SSH pub key for Ansible using `authorized_key` module for the new user that was created. Then a second play that will add sudo privileges
 
 ```
 - hosts: all
@@ -89,14 +89,14 @@ dave:x:1001:1001::/home/dave:/bin/sh
       mode: 0440
 ```
 
-3. Then, we can create a `sudoer_dave` file that will set the sudo privilege for this user.
+### 3. Then, we can create a `sudoer_dave` file that will set the sudo privilege for this user.
 
 ```
 jonathan@dockerhost-01:~/ansible_tutorial/files$ cat sudoer_dave
 dave ALL=(ALL) NOPASSWD: ALL
 ```
 
-4. Now, if we run the playbook it will add the SSH pub key as an authorized key for the user `dave` and then add the sudoers file using the `copy` module.
+### 4. Now, if we run the playbook it will add the SSH pub key as an authorized key for the user `dave` and then add the sudoers file using the `copy` module.
 
 ```
 TASK [add ssh key for dave] ******************************************************************************************
@@ -121,7 +121,7 @@ PLAY RECAP *********************************************************************
 192.168.1.77               : ok=11   changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0
 ```
 
-5. Now, we can use this background user to run Ansible play books so that we do NOT have to include `--ask-become-pass` everytime we run the playbook. 
+### 5. Now, we can use this background user to run Ansible play books so that we do NOT have to include `--ask-become-pass` everytime we run the playbook. 
 
 - To do this, we can modify the `ansible.cfg` config file and add our new user.
 
@@ -158,7 +158,7 @@ PLAY RECAP *********************************************************************
 ```
 
 
-6. Typically when you first provision a fresh server, it is good to create a separate bootstrap playbook that will configure users and everything to configure the server initially. Then run a second playbook that will configure/install services
+### 6. Typically when you first provision a fresh server, it is good to create a separate bootstrap playbook that will configure users and everything to configure the server initially. Then run a second playbook that will configure/install services
 
 ```
 ---
