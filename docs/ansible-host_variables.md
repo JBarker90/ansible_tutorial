@@ -1,6 +1,6 @@
-## Host Variables and Handlers
+# Host Variables and Handlers
 
-1. We can create a host variables file for each host in the `inventory` file. 
+### 1. We can create a host variables file for each host in the `inventory` file. 
 
 - Under the root directory we can create a new `host_vars` directory to store the files
 
@@ -39,7 +39,7 @@ php_package_name: libapache2-mod-php
 
 - The major benefit with using host variables is organizing and cleaning up taskbooks for each role that you create. 
 
-2. Using these host variables, you can modify the taskbooks under each role with variables.
+### 2. Using these host variables, you can modify the taskbooks under each role with variables.
 
 - Under `roles/web_servers/tasks/main.yml` you can replace the names with the variables that were created.
 
@@ -85,7 +85,7 @@ php_package_name: libapache2-mod-php
     mode: 0644
 ```
 
-3. Now we can also use a concept called handlers
+### 3. Now we can also use a concept called handlers
 
 - A handler can be used to notify a service of a change more efficiently than our current task. 
 
