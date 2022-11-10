@@ -20,14 +20,7 @@
     regexp: '^ServerAdmin'
     line: ServerAdmin somebody@somewhere.net
   when: ansible_distribution == "AlmaLinux"
-  register: apache
-
-- name: restart httpd
-  tags: apache,httpd
-  service:
-    name: "{{ apache_service }}"
-    state: restarted
-  when: apache.changed
+  notify: restart_apache
 
 - name: copy default html file for site
   tags: apache,apache2,httpd
