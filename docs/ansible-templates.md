@@ -1,8 +1,8 @@
-## Templates
+# Templates
 
-1. Using templates, you can create template of something like an SSH configuration file to modify and then automate changes
+### 1. Using templates, you can create template of something like an SSH configuration file to modify and then automate changes
 
-2. As an example, we can store a copy of the SSH config file from `/etc/ssh/sshd_config` (since the path is the same regardless of the distro) and store this in version control
+### 2. As an example, we can store a copy of the SSH config file from `/etc/ssh/sshd_config` (since the path is the same regardless of the distro) and store this in version control
 
 - On our ansible controller we can copy a version of the ssh config file in a newer directory called `templates` located in the base role `roles/base/templates` and save it with a Jinja 2 extension
 
@@ -21,7 +21,7 @@ sent 43 bytes  received 4,360 bytes  677.38 bytes/sec
 total size is 4,269  speedup is 0.97
 ```
 
-3. Now, we can turn the files into templates. 
+### 3. Now, we can turn the files into templates. 
 
 - In both files we can add an `AllowUsers` variable 
 
@@ -60,7 +60,7 @@ jonathan@dockerhost-01:~/ansible_tutorial/host_vars$ cp -av 192.168.1.74.yml 192
 '192.168.1.74.yml' -> '192.168.1.71.yml'
 ```
 
-4. After creating the templates, we can add a task in `roles/base/tasks/main.yml` to generate an sshd_config file from the template
+### 4. After creating the templates, we can add a task in `roles/base/tasks/main.yml` to generate an sshd_config file from the template
 
 - This task is added below the original one that was already there
 
@@ -87,7 +87,7 @@ jonathan@dockerhost-01:~/ansible_tutorial/roles/base/handlers$ cat main.yml
     state: restarted
 ```
 
-5. Finally, we can run the main playbook to verify everything works as expected. 
+### 5. Finally, we can run the main playbook to verify everything works as expected. 
 
 - This is a snippet of the output. But you can see that everything ran normally and the ssh templates plays ran successfully
 
